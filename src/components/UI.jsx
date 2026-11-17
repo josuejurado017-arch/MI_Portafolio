@@ -15,7 +15,8 @@ export function ExternalLink({ href, children, className = '', ...props }) {
 }
 
 export function ProjectArchitecture({ project }) {
-  const { t } = usePreferences();
+  const { t, language } = usePreferences();
+  const index = language === 'es' ? 0 : 1;
   const stats = project?.previewMeta?.stats || [];
   const domain = project?.previewMeta?.domain || '';
   const isCba = Boolean(project?.institution);
@@ -26,12 +27,15 @@ export function ProjectArchitecture({ project }) {
       <span><FiShield /> {isCba ? t('Entorno Institucional Privado · CBA Tarija', 'Private Institutional Environment · CBA Tarija') : t('Arquitectura Verificada', 'Verified Architecture')}</span>
     </div>
     <div className="detail-arch-stats">
-      {stats.map((stat, i) => (
-        <div key={stat} className="detail-arch-stat">
-          <small>0{i + 1} · {i === 0 ? t('ESCALA / ALCANCE', 'SCALE / SCOPE') : i === 1 ? t('MÓDULO CLAVE', 'CORE MODULE') : t('OPERACIÓN', 'OPERATION')}</small>
-          <strong>{stat}</strong>
-        </div>
-      ))}
+      {stats.map((stat, i) => {
+        const text = Array.isArray(stat) ? stat[index] : stat;
+        return (
+          <div key={text} className="detail-arch-stat">
+            <small>0{i + 1} · {i === 0 ? t('ESCALA / ALCANCE', 'SCALE / SCOPE') : i === 1 ? t('MÓDULO CLAVE', 'CORE MODULE') : t('OPERACIÓN', 'OPERATION')}</small>
+            <strong>{text}</strong>
+          </div>
+        );
+      })}
       <div className="detail-arch-stat">
         <small><FiLayers /> STACK</small>
         <strong>{project?.stack?.slice(0, 2).join(' + ')}</strong>

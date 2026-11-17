@@ -6,7 +6,9 @@ import { profile } from '../utils/content';
 import { SocialLinks } from '../components/Layout';
 
 export default function Hero() {
-  const { t } = usePreferences();
+  const { t, language } = usePreferences();
+  const cvUrl = language === 'es' ? profile.cv : (profile.cvEn || profile.cv);
+  const cvName = language === 'es' ? 'CV_Edgar_Josue_Jurado_FullStack_ES.pdf' : 'CV_Edgar_Josue_Jurado_FullStack_EN.pdf';
   return <section id="inicio" className="hero"><div className="hero-grid" aria-hidden="true" /><div className="hero-orb" aria-hidden="true" /><div className="particles" aria-hidden="true">{Array.from({ length: 15 }, (_, i) => <i key={i} style={{ left: `${(i * 37) % 100}%`, top: `${(i * 19) % 100}%`, animationDelay: `${i * 0.7}s` }} />)}</div>
     <div className="container hero-content"><motion.div className="hero-copy" initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
       <div className="availability"><span className="status-dot" />{t('Abierto a nuevas oportunidades y proyectos', 'Open to new opportunities and projects')}<span className="availability-line" /><span>2026</span></div>
@@ -14,7 +16,7 @@ export default function Hero() {
       <h1>{t('Transformo ideas', 'Turning ideas')}<br />{t('en', 'into')} <span className="gradient-text">{t('soluciones', 'meaningful')}<br className="desktop-break" />{t(' digitales.', ' software.')}</span></h1>
       <div className="hero-role"><span className="role-line" /><span>{t('Desarrollador Full Stack', 'Full Stack Developer')}</span><span className="typing-caret" /></div>
       <p className="hero-description">{t('Desarrollador Full Stack con sistemas reales en producción (CBA Tarija, ERPs e IoT). Especializado en Laravel 12, React 19, Vue 3, TypeScript, .NET y PostgreSQL.', 'Full Stack Developer with real systems in production (CBA Tarija, ERPs & IoT). Specialized in Laravel 12, React 19, Vue 3, TypeScript, .NET and PostgreSQL.')}</p>
-      <div className="hero-buttons"><a className="button button-primary" href="#proyectos">{t('Explorar proyectos', 'Explore projects')}<FiArrowUpRight /></a>{profile.cv ? <a className="button button-secondary" href={profile.cv} download="CV_Edgar_Josue_Jurado_FullStack.pdf">{t('Descargar CV', 'Download CV')}<FiDownload /></a> : <a className="button button-secondary" href="#contacto">{t('Solicitar CV', 'Request CV')}<FiDownload /></a>}<a className="hero-contact text-link" href="#contacto">{t('Contactar', 'Contact')}<FiArrowUpRight /></a></div>
+      <div className="hero-buttons"><a className="button button-primary" href="#proyectos">{t('Explorar proyectos', 'Explore projects')}<FiArrowUpRight /></a>{cvUrl ? <a className="button button-secondary" href={cvUrl} download={cvName}>{t('Descargar CV', 'Download CV')}<FiDownload /></a> : <a className="button button-secondary" href="#contacto">{t('Solicitar CV', 'Request CV')}<FiDownload /></a>}<a className="hero-contact text-link" href="#contacto">{t('Contactar', 'Contact')}<FiArrowUpRight /></a></div>
       <div className="hero-social"><SocialLinks /><span className="vertical-separator" /><span><FiMapPin />Tarija, Bolivia</span></div>
     </motion.div>
     <motion.div className="hero-visual" initial={{ opacity: 0, y: 25 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.2 }}>

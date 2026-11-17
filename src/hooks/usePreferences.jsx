@@ -6,13 +6,13 @@ const readPreference = (key, fallback) => {
 };
 
 export function PreferencesProvider({ children }) {
-  const [language, setLanguage] = useState(() => readPreference('language', 'es') === 'en' ? 'en' : 'es');
+  const [language, setLanguage] = useState(() => readPreference('portfolio_lang', 'en') === 'es' ? 'es' : 'en');
   const [theme, setTheme] = useState(() => readPreference('theme', 'dark') === 'light' ? 'light' : 'dark');
   useEffect(() => {
     document.documentElement.lang = language;
     document.documentElement.dataset.theme = theme;
     document.querySelector('meta[name="theme-color"]').content = theme === 'dark' ? '#080b12' : '#f6f8fc';
-    try { localStorage.setItem('language', language); localStorage.setItem('theme', theme); } catch { /* Private browsing can restrict storage. */ }
+    try { localStorage.setItem('portfolio_lang', language); localStorage.setItem('theme', theme); } catch { /* Private browsing can restrict storage. */ }
   }, [language, theme]);
   const t = (es, en) => language === 'es' ? es : en;
   return <Preferences.Provider value={{ language, setLanguage, theme, setTheme, t }}>{children}</Preferences.Provider>;
