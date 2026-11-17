@@ -1,0 +1,17 @@
+import { FiCode, FiDatabase, FiServer, FiTerminal, FiTool } from 'react-icons/fi';
+import { SiReact, SiVuedotjs, SiTypescript, SiJavascript, SiTailwindcss, SiBootstrap, SiLaravel, SiPhp, SiDotnet, SiFastapi, SiNodedotjs, SiPostgresql, SiMysql, SiSupabase, SiDocker, SiLinux, SiGit, SiGithub } from 'react-icons/si';
+import { Reveal, SectionHeading } from '../components/UI';
+import { usePreferences } from '../hooks/usePreferences';
+
+const groups = [
+  { name: 'Frontend', icon: FiCode, color: 'blue', items: [[SiReact, 'React 19'], [SiVuedotjs, 'Vue 3 (Pinia)'], [SiTypescript, 'TypeScript'], [SiJavascript, 'JavaScript'], [SiTailwindcss, 'Tailwind CSS 4'], [SiBootstrap, 'Bootstrap 5']] },
+  { name: 'Backend & APIs', icon: FiServer, color: 'purple', items: [[SiLaravel, 'Laravel 12'], [SiPhp, 'PHP 8.3'], [SiDotnet, '.NET 8 / C#'], [SiFastapi, 'Python (FastAPI)'], [SiNodedotjs, 'Node.js']] },
+  { name: 'Bases de datos|Databases', icon: FiDatabase, color: 'green', items: [[SiPostgresql, 'PostgreSQL'], [SiSupabase, 'Supabase'], [SiMysql, 'MySQL']] },
+  { name: 'DevOps & IoT', icon: FiTerminal, color: 'orange', items: [[SiDocker, 'Docker'], [SiLinux, 'Linux'], [FiTerminal, 'ESP32 / ESP-NOW']] },
+  { name: 'Herramientas|Tools & APIs', icon: FiTool, color: 'pink', items: [[SiGit, 'Git'], [SiGithub, 'GitHub'], [FiCode, 'Twilio / QR / PDF']] },
+];
+
+export default function Stack() {
+  const { t } = usePreferences();
+  return <section id="stack" className="section stack-section"><div className="container"><Reveal><SectionHeading eyebrow={t('MI CAJA DE HERRAMIENTAS', 'MY TOOLKIT')} title={t('El stack detrás', 'The stack behind')} accent={t('de cada solución.', 'every solution.')} description={t('Tecnologías modernas que conecto para construir sistemas empresariales completos, desde la base de datos hasta el despliegue.', 'Modern technologies I connect to build complete enterprise systems, from database modeling to deployment.')} /></Reveal><div className="stack-grid">{groups.map(({ name, icon: Icon, color, items }, i) => <Reveal key={name} className={`stack-card ${color}`} delay={i * 0.05}><div className="stack-card-top"><span className="stack-icon"><Icon /></span><span>0{i + 1}</span></div><h3>{t(name.split('|')[0], name.split('|')[1] || name)}</h3><div className="stack-items">{items.map(([Technology, label]) => <span key={label}><Technology />{label}</span>)}</div><div className="stack-level"><span>{t('Aplicado en proyectos', 'Applied in projects')}</span><div><i /><i /><i /><i /></div></div></Reveal>)}</div><p className="stack-note">{t('Tecnologías implementadas en sistemas institucionales reales (CBA Tarija), ERPs industriales y plataformas IoT.', 'Technologies implemented across real institutional systems (CBA Tarija), industrial ERPs and IoT platforms.')}</p><div className="skill-tags">{['Arquitectura API REST|REST API Architecture', 'Diseño Relacional (22+ tablas)|Relational Modeling (22+ tables)', 'Autenticación Sanctum / Tokens|Sanctum / Token Auth', 'Acreditación QR y Códigos de Barras|QR Accreditation & Barcodes', 'Integración WhatsApp / Twilio|WhatsApp / Twilio Integration', 'Pruebas Automatizadas (Pest / Vitest / Playwright)|Automated Testing (Pest / Vitest / Playwright)', 'Telemetría IoT (ESP-NOW TDMA)|IoT Telemetry (ESP-NOW TDMA)', 'Despliegue en Producción|Production Deployment'].map(skill => <span key={skill}>{t(...skill.split('|'))}</span>)}</div></div></section>;
+}

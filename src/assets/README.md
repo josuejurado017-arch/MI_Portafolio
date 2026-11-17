@@ -1,0 +1,1 @@
+Coloca aquí imágenes importadas por React. Los recursos públicos, como la fotografía y el CV, pueden ir en `public/`. Las vistas previas actuales de los proyectos son ilustraciones de interfaz generadas con CSS, no capturas de los sistemas reales.
