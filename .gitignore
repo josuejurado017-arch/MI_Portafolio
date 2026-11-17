@@ -5,3 +5,5 @@ dist/
 *.log
 test-results/
 playwright-report/
+.vercel
+vercel-recovery-codes*.txt
