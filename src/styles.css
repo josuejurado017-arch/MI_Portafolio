@@ -47,3 +47,26 @@
 .aside-institution span{font-size:10px;font-weight:600;color:var(--accent);line-height:1.4}
 .private-notice{display:flex;align-items:flex-start;gap:10px;padding:12px;border-radius:7px;background:var(--surface-raised);border:1px solid var(--border-strong);font-size:11px!important;line-height:1.65!important}
 .private-notice svg{color:var(--accent);font-size:15px;margin-top:2px;flex-shrink:0}
+
+/* Image-free technical case study cards and architecture blueprint */
+.project-card{border-top:3px solid var(--accent)}
+.project-card.card-accent-blue{border-top-color:var(--blue)}
+.project-card.card-accent-purple{border-top-color:var(--purple)}
+.project-card.card-accent-green{border-top-color:var(--green)}
+.project-card-top{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:18px 20px 14px;border-bottom:1px solid var(--border);background:var(--surface-raised)}
+.project-number{font-family:'JetBrains Mono',monospace;font-size:8.5px;font-weight:600;text-transform:uppercase;letter-spacing:1.1px;color:var(--accent)}
+.cba-card-badge{background:#ffffff;padding:3px 7px;border-radius:4px;display:inline-flex;align-items:center;box-shadow:0 2px 8px #00000025;flex-shrink:0}
+.cba-card-badge img{height:16px;width:auto;display:block;object-fit:contain}
+.featured-pill{display:inline-flex;align-items:center;gap:5px;padding:4px 8px;border-radius:4px;border:1px solid var(--border-strong);background:var(--surface);color:var(--text);font-size:8.5px;font-weight:600;white-space:nowrap}
+.card-metrics-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:16px;padding:9px;border-radius:6px;background:var(--bg);border:1px solid var(--border)}
+.card-metrics-strip>span{font-family:'JetBrains Mono',monospace;font-size:8.5px;font-weight:600;color:var(--text);text-align:center;padding:4px 2px;border-right:1px solid var(--border);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.card-metrics-strip>span:last-child{border-right:0}
+.detail-arch-card{border:1px solid var(--border-strong);border-radius:10px;background:var(--surface);overflow:hidden;margin-bottom:36px}
+.detail-arch-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:14px 20px;background:var(--surface-raised);border-bottom:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted)}
+.detail-arch-header>span{display:inline-flex;align-items:center;gap:8px}
+.detail-arch-header svg{color:var(--accent);font-size:14px}
+.detail-arch-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border)}
+.detail-arch-stat{background:var(--surface);padding:18px 20px;display:flex;flex-direction:column;gap:6px}
+.detail-arch-stat small{font-family:'JetBrains Mono',monospace;font-size:8.5px;color:var(--faint);letter-spacing:1px;display:flex;align-items:center;gap:5px}
+.detail-arch-stat strong{font-size:16px;color:var(--text);letter-spacing:-0.4px}
+@media(max-width:720px){.detail-arch-stats{grid-template-columns:1fr 1fr}.project-card-top{padding:15px 18px 12px}}
